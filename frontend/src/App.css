@@ -1,0 +1,415 @@
+ 
+
+  .logo{
+    height: 60px;
+    width: 80px;
+    
+ }
+
+ 
+ .navbar-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none  ;
+  gap: 52px;
+  margin-left: 20vh;
+  
+
+}
+
+/* ===== NAV LINKS ===== */
+.navbar-nav .nav-link {
+  color: #004c7f;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  border-radius: 8px;
+  left: 20px;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+/* ===== HOVER EFFECT ===== */
+.navbar-nav .nav-link:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #abc2f9 !important;
+}
+ 
+/* ===== TOGGLER BUTTON ===== */
+.navbar-toggler .toggler-icon {
+  border: 1px solid #ffffff;
+  text-align: right     ;
+}
+ .nav-item2 {
+    color: #004c7f;
+    border: #0f2c5c;
+   margin-left: -8.2vh;
+ }
+ .nav-item1 {
+    color: #004c7f;
+    border: #0f2c5c;
+  }
+ /* ===== HERO ===== */
+.hero {
+    height: 68vh;
+    width: 69vh;
+    background: linear-gradient(rgba(15, 76, 117, 0.8), rgba(15, 76, 117, 0.8)), url(https://images.unsplash.com/photo-1580281657527-47f249e8f9c5);
+    color: white;
+    border-bottom-left-radius: 76vh;
+    border-bottom-right-radius: 76vh;
+    border-top-left-radius: 76vh;
+    border-top-right-radius: 76vh;
+}
+ .hero2 {
+   height: 68vh;
+    width: 69vh;
+  background: linear-gradient(
+      rgba(180, 225, 255, 0.8),
+      rgba(134, 206, 255, 0.8)
+    ),
+    url("https://images.unsplash.com/photo-1580281657527-47f249e8f9c5");
+   margin-left: 15vh;
+   color: white;
+    border-bottom-left-radius: 76vh;
+    border-bottom-right-radius: 76vh;
+    border-top-left-radius: 76vh;
+    border-top-right-radius: 76vh;
+}
+ 
+.hero h1 {
+  color: #0f2c5c;
+}
+
+.hero ul li span:last-child {
+  color: #333;
+}
+
+.hero-content {
+    position: relative;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: rgb(11, 32, 89);
+ }
+ .btn{
+    background-color: #004c7f;
+    color: white;
+    border-radius: 20px;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 10px;
+ }
+  .btn:hover{
+      background-color: #003366;
+      color: white;
+      text-decoration: none;
+  }
+  /* ===== FEATURES SECTION ===== */
+  .img-fluid {
+    max-width: 120%;
+    height: 100%;
+    margin-left: -20vh;
+    }
+  .features{
+    display: flex;
+    margin-top: 30vh;
+  }
+  .our-services{
+ margin-top: 27vh;
+  background: linear-gradient(135deg, #e3f2fd, #f8fbff);
+  }
+  .services-text{
+ margin-top: 40px;
+  }
+  
+  .card-body {
+    background-color: #ffffff;
+    
+  }
+  .nav-link {
+  list-style: none  ;
+  }
+  /* SIGNUP PAGE */
+.signup-section {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e3f2fd, #f8fbff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-container {
+  background: #fff;
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  margin-top: 20vh;
+}
+
+.signup-logo {
+  width: 80px;
+  margin-bottom: 15px;
+}
+
+.signup-title {
+  font-weight: 700;
+  color: #1b6ca8;
+}
+
+.signup-subtitle {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 25px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.signup-input {
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+  font-size: 15px;
+}
+
+.signup-input:focus {
+  outline: none;
+  border-color: #1b6ca8;
+  box-shadow: 0 0 0 2px rgba(27, 108, 168, 0.2);
+}
+
+.signup-button {
+  background: #1b6ca8;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.signup-button:hover {
+  background: #155a8a;
+}
+
+.signup-login-link {
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+.signup-login-link a {
+  color: #1b6ca8;
+  font-weight: 600;
+  text-decoration: none;
+}
+.login-section {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e3f2fd, #f8fbff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-container {
+  background: #fff;
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  margin-top: 20vh;
+}
+.login-logo {
+  width: 80px;
+  margin-bottom: 15px;
+}
+.login-title {
+  font-weight: 700;
+  color: #1b6ca8;
+}
+.login-subtitle {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 25px;      
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.login-input {
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+  font-size: 15px;
+
+}
+.login-button {
+  background: #1b6ca8;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.login-signup-link {
+  margin-top: 18px;
+  font-size: 14px;
+}
+.join-section{
+margin-top: 29vh;
+margin-bottom: 20vh;
+}
+.profile-card {
+  background: #ffffff;
+  padding: 30px 20px;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.profile-name {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 15px;
+  color: #0f2c5c;
+}
+ 
+/* ===================== GLOBAL FIX ===================== */
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===================== NAVBAR RESPONSIVE ===================== */
+@media (max-width: 992px) {
+  .navbar-nav {
+    flex-direction: column;
+    gap: 15px;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .nav-item1,
+  .nav-item2 {
+    margin-left: 0;
+  }
+}
+
+/* ===================== HERO RESPONSIVE ===================== */
+@media (max-width: 992px) {
+  .hero,
+  .hero2 {
+    height: 65vw;
+    width: 65vw;
+    border-radius: 50%;
+    margin: auto;
+  }
+
+  .hero2 {
+    margin-left: auto;
+    margin-top: 20px;
+  }
+
+  .hero-content {
+    left: 50%;
+    top: 50%;
+    width: 90%;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero,
+  .hero2 {
+    height: 75vw;
+    width: 75vw;
+  }
+
+  .hero-content h1 {
+    font-size: 20px;
+  }
+  .features-text{
+    margin-top: 20vh;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+/* ===================== FEATURES & SERVICES ===================== */
+@media (max-width: 992px) {
+  .features {
+    margin-top: 10vh;
+  }
+
+  .our-services {
+    margin-top: 10vh;
+  }
+
+  .img-fluid {
+    max-width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* ===================== SIGNUP & LOGIN ===================== */
+@media (max-width: 576px) {
+  .signup-container,
+  .login-container {
+    margin-top: 5vh;
+    padding: 30px 20px;
+  }
+
+  .signup-title,
+  .login-title {
+    font-size: 22px;
+  }
+
+  .signup-input,
+  .login-input {
+    font-size: 14px;
+  }
+
+  .signup-button,
+  .login-button {
+    font-size: 15px;
+  }
+}
+
+/* ===================== JOIN SECTION ===================== */
+@media (max-width: 768px) {
+  .join-section {
+    margin-top: 10vh;
+
+    margin-bottom: 10vh;
+  }
+  .features-text{
+    margin-top: 10vh;
+  }
+}
