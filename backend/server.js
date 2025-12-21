@@ -4,7 +4,7 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 
 const app = express();
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: 'https://healthcare-dusky-one.vercel.app', credentials: true }));
 app.use(express.json());
 
 app.get('/', (req, res) => res.send('Backend is running successfully 🚀'));
