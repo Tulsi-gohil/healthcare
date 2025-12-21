@@ -1,35 +1,30 @@
-const BASE_URL = process.env.REACT_APP_API_URL || "https://healthcare-11-tjzq.onrender.com";
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const connectDB = require('./config/db');
 
-async function request(path, opts = {}) {
-  try {
-    const headers = opts.headers || {};
-    headers["Content-Type"] = "application/json";
+const app = express();
+app.use(cors({ origin: 'https://healthcare-dusky-one.vercel.app', credentials: true }));
+app.use(express.json());
 
-    const token = localStorage.getItem("token");
-    if (token) headers.Authorization = `Bearer ${token}`;
+app.get('/', (req, res) => res.send('Backend is running successfully 🚀'));
 
-    const res = await fetch(`${BASE_URL}${path}`, {
-      ...opts,
-      headers,
-      body: opts.body ? JSON.stringify(opts.body) : undefined,
-    });
+const start = async () => {
+  await connectDB();
 
-    // Try JSON first, fallback to text
-    const text = await res.text();
-    let data = text ? JSON.parse(text) : {};
+  app.use('/api/auth', require('./routes/authRoutes'));
+  app.use('/api/appointments', require('./routes/appointmentRoutes'));
 
-    if (!res.ok) {
-      return {
-        success: false,
-        message: data.message || res.statusText || "Request failed",
-      };
+    // development-only seed route
+    if (process.env.NODE_ENV !== 'production') {
+      app.use('/api/seed', require('./routes/seedRoutes'));
     }
 
-    return data;
-  } catch (error) {
-    return {
-      success: false,
-      message: "Server not responding / Network error",
-    };
-  }
-}
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));
+};
+
+start().catch(err => {
+  console.error('Failed to start server:', err);
+  process.exit(1);
+});
