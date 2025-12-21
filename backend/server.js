@@ -4,27 +4,39 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 
 const app = express();
-app.use(cors({ origin: 'https://healthcare-dusky-one.vercel.app', credentials: true }));
+
+app.use(cors({
+  origin: 'https://healthcare-dusky-one.vercel.app',
+  credentials: true
+}));
 app.use(express.json());
 
-app.get('/', (req, res) => res.send('Backend is running successfully 🚀'));
+// Root route (JSON)
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Backend is running successfully 🚀'
+  });
+});
 
 const start = async () => {
   await connectDB();
 
-  app.use('/api/auth', require('./routes/authRoutes'));
-  app.use('/api/appointments', require('./routes/appointmentRoutes'));
+  // MATCH FRONTEND ROUTES
+  app.use('/auth', require('./routes/authRoutes'));
+  app.use('/appointments', require('./routes/appointmentRoutes'));
 
-    // development-only seed route
-    if (process.env.NODE_ENV !== 'production') {
-      app.use('/api/seed', require('./routes/seedRoutes'));
-    }
+  if (process.env.NODE_ENV !== 'production') {
+    app.use('/seed', require('./routes/seedRoutes'));
+  }
 
   const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));
+  app.listen(PORT, () =>
+    console.log(`✅ Server running on port ${PORT}`)
+  );
 };
 
 start().catch(err => {
-  console.error('Failed to start server:', err);
+  console.error('❌ Failed to start server:', err);
   process.exit(1);
 });
