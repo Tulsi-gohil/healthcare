@@ -1,4 +1,4 @@
-const BASE_URL = process.env.REACT_APP_API_URL || "https://healthcare-11-tjzq.onrender.com//api";
+const BASE_URL = process.env.REACT_APP_API_URL || "https://healthcare-11-tjzq.onrender.com";
 
 async function request(path, opts = {}) {
   const headers = opts.headers || {};
