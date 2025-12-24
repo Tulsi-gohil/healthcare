@@ -2,9 +2,11 @@ import "../App.css";
 import { useState } from "react";
 import { bookAppointment } from "../services/api";
 import { useNavigate } from 'react-router-dom';
+import emailjs from "@emailjs/browser";
+
 
 function BookAppointment() {
-  const [form, setform] = useState({
+  const [form, setForm] = useState({
     fullName: "",
     email: "",
     phone: "",
@@ -18,15 +20,36 @@ function BookAppointment() {
     reasonForVisit: "",
     symptoms: "",
   });
+
   const navigate = useNavigate();
 
   // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setform((prev) => ({
+    setForm((prev) => ({
       ...prev,
       [name]: value,
     }));
+  };
+
+  // 📧 Send Email using EmailJS
+  const sendAppointmentEmail = (form) => {
+    return emailjs.send(
+      "YOUR_SERVICE_ID", // 🔴 replace
+      "YOUR_TEMPLATE_ID", // 🔴 replace
+      {
+        fullName: form.fullName,
+        email: form.email,
+        phone: form.phone,
+        doctor: form.doctor,
+        date: form.appointmentDate,
+        time: form.appointmentTime,
+        department: form.department,
+        visitType: form.visitType,
+        reason: form.reasonForVisit || form.symptoms,
+      },
+      "YOUR_PUBLIC_KEY" // 🔴 replace
+    );
   };
 
   // Handle form submit
@@ -37,7 +60,10 @@ function BookAppointment() {
       const payload = {
         patientName: form.fullName,
         doctor: form.doctor,
-        date: form.appointmentDate && form.appointmentTime ? `${form.appointmentDate}T${form.appointmentTime}` : form.appointmentDate,
+        date:
+          form.appointmentDate && form.appointmentTime
+            ? `${form.appointmentDate}T${form.appointmentTime}`
+            : form.appointmentDate,
         reason: form.reasonForVisit || form.symptoms,
         metadata: {
           email: form.email,
@@ -45,23 +71,30 @@ function BookAppointment() {
           gender: form.gender,
           age: form.age,
           department: form.department,
-          visitType: form.visitType
-        }
+          visitType: form.visitType,
+        },
       };
 
+      // 1️⃣ Save appointment in backend
       const response = await bookAppointment(payload);
 
       if (response.success) {
-        alert('Appointment booked ✅');
-        navigate('/MyAppointment');
+        // 2️⃣ Send confirmation email
+        await sendAppointmentEmail(form);
+
+        alert("Appointment booked & email sent ✅");
+        navigate("/MyAppointment");
       } else {
-        alert('Failed to book appointment ❌: ' + (response.message || 'Unknown'));
+        alert(
+          "Failed to book appointment ❌: " +
+            (response.message || "Unknown error")
+        );
       }
     } catch (error) {
-      alert('Server error ❌');
+      console.error(error);
+      alert("Server error ❌");
     }
   };
-
   return (
     <section className="container my-5">
       <div className="row justify-content-center">
