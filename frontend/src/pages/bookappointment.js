@@ -6,7 +6,7 @@ import emailjs from "@emailjs/browser";
 
 
 function BookAppointment() {
-  const [form, setForm] = useState({
+   const [form, setform] = useState({
     fullName: "",
     email: "",
     phone: "",
@@ -20,36 +20,15 @@ function BookAppointment() {
     reasonForVisit: "",
     symptoms: "",
   });
-
   const navigate = useNavigate();
 
   // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm((prev) => ({
+    setform((prev) => ({
       ...prev,
       [name]: value,
     }));
-  };
-
-  // 📧 Send Email using EmailJS
-  const sendAppointmentEmail = (form) => {
-    return emailjs.send(
-      "YOUR_SERVICE_ID", // 🔴 replace
-      "YOUR_TEMPLATE_ID", // 🔴 replace
-      {
-        fullName: form.fullName,
-        email: form.email,
-        phone: form.phone,
-        doctor: form.doctor,
-        date: form.appointmentDate,
-        time: form.appointmentTime,
-        department: form.department,
-        visitType: form.visitType,
-        reason: form.reasonForVisit || form.symptoms,
-      },
-      "YOUR_PUBLIC_KEY" // 🔴 replace
-    );
   };
 
   // Handle form submit
@@ -60,10 +39,7 @@ function BookAppointment() {
       const payload = {
         patientName: form.fullName,
         doctor: form.doctor,
-        date:
-          form.appointmentDate && form.appointmentTime
-            ? `${form.appointmentDate}T${form.appointmentTime}`
-            : form.appointmentDate,
+        date: form.appointmentDate && form.appointmentTime ? `${form.appointmentDate}T${form.appointmentTime}` : form.appointmentDate,
         reason: form.reasonForVisit || form.symptoms,
         metadata: {
           email: form.email,
@@ -71,30 +47,22 @@ function BookAppointment() {
           gender: form.gender,
           age: form.age,
           department: form.department,
-          visitType: form.visitType,
-        },
+          visitType: form.visitType
+        }
       };
 
-      // 1️⃣ Save appointment in backend
       const response = await bookAppointment(payload);
 
       if (response.success) {
-        // 2️⃣ Send confirmation email
-        await sendAppointmentEmail(form);
-
-        alert("Appointment booked & email sent ✅");
-        navigate("/MyAppointment");
+        alert('Appointment booked ✅');
+        navigate('/MyAppointment');
       } else {
-        alert(
-          "Failed to book appointment ❌: " +
-            (response.message || "Unknown error")
-        );
+        alert('Failed to book appointment ❌: ' + (response.message || 'Unknown'));
       }
     } catch (error) {
-      console.error(error);
-      alert("Server error ❌");
+      alert('Server error ❌');
     }
-  };
+  };  
   return (
     <section className="container my-5">
       <div className="row justify-content-center">
